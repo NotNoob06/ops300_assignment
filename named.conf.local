@@ -1,0 +1,15 @@
+include "/etc/bind/xfer.key";
+
+server 192.168.21.10 { keys { xfer-key; }; };
+
+zone "lab.nmnguyen7.300.ops" {
+    type secondary;
+    masters { 192.168.21.10; };
+    file "/var/cache/bind/db.lab.nmnguyen7.300.ops";
+};
+
+zone "21.168.192.in-addr.arpa" {
+    type secondary;
+    masters { 192.168.21.10; };
+    file "/var/cache/bind/db.192.168.21";
+};
